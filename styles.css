@@ -245,6 +245,17 @@ section {
     outline-offset: 3px;
 }
 
+/* Phones and small tablets: thinner heading outline so the letters stay crisp */
+@media (max-width: 700px) {
+    #name {
+        -webkit-text-stroke: 1px #fff;
+        text-shadow:
+            0 0 4px rgba(255, 255, 255, 0.5),
+            0 0 12px rgba(0, 0, 0, 0.6),
+            0 0 24px rgba(190, 191, 194, 0.3);
+    }
+}
+
 /* Phones: smaller buttons that sit side by side, or stack if the screen is very narrow */
 @media (max-width: 480px) {
     .hero-btn {
