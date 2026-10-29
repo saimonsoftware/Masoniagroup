@@ -1,0 +1,772 @@
+/* ---------- Page ---------- */
+body {
+  margin: 0;
+  background: black;
+  color: white;
+}
+ 
+/* ---------- Links ---------- */
+a {
+  color: white;
+  text-decoration: none;
+}
+ 
+/* ---------- Hero (full screen before scrolling) ---------- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    padding-top: 70px;         /* room for the fixed nav bar */
+}
+ 
+/* ---------- Nav bar ---------- */
+html {
+    scroll-behavior: smooth;   /* glide to sections when a link is clicked */
+}
+
+section {
+    scroll-margin-top: 80px;   /* stops the sticky bar covering section headings */
+}
+
+#navbar {
+    position: fixed;           /* stays at the top of the screen while scrolling */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo left, links right */
+    gap: 20px;
+    padding: 12px clamp(16px, 4vw, 48px);
+    background: transparent;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+#navigation {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 4vw, 60px);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navigation a {
+    display: block;
+    padding: 8px 4px;
+    font-size: 18px;
+    font-family: "Oswald", sans-serif;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+#navigation a:hover {
+    opacity: 1;
+}
+
+#navbar a:focus-visible,
+.nav-toggle:focus-visible {
+    outline: 2px solid #3a5bff;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Menu (☰) button — hidden on larger screens */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-toggle-bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: white;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+/* Turn the three lines into an X when the menu is open */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Phones and small tablets: links drop down under the bar */
+@media (max-width: 700px) {
+    #navbar {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    #navigation {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #navigation.is-open {
+        display: flex;
+    }
+
+    #navigation a {
+        padding: 14px clamp(16px, 4vw, 48px);
+        opacity: 0.9;
+    }
+}
+ 
+/* ---------- Hero text (centred in the space below the nav) ---------- */
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: clamp(12px, 2.5vw, 24px);     /* even spacing between each line */
+    padding: 40px clamp(16px, 5vw, 48px);
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-content > * {
+    margin: 0;                          /* spacing comes from the gap above */
+}
+
+.design-title {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+    letter-spacing: 0.3em;
+    opacity: 0.85;
+}
+
+#name {
+    font-size: clamp(2.2rem, 7vw, 6rem);
+    line-height: 1.1;
+    color: #fff;
+    -webkit-text-stroke: clamp(1px, 0.15vw, 2px) #3a5bff;
+    paint-order: stroke fill;
+    text-shadow:
+        0 0 10px #fcfdfe,
+        0 0 20px #000000,
+        0 0 40px #bebfc2,
+        0 0 80px #000000;
+    overflow-wrap: break-word;
+}
+
+#role {
+    font-size: clamp(1rem, 2.4vw, 1.6rem);
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 780px;                   /* keeps the tagline to a readable width */
+}
+
+#hero-description {
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
+    font-family: "Oswald", serif;
+    max-width: 800px;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.hero-btn {
+    display: flex;
+    flex-wrap: wrap;                    /* buttons stack when there isn't room */
+    justify-content: center;
+    gap: 16px;
+    margin-top: clamp(16px, 4vw, 32px);
+}
+
+.explore, .discover {
+    color: black;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    border: none;
+    border-radius: 15px;
+    padding: 12px 24px;
+    min-height: 44px;                   /* comfortable tap size on phones */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.explore:hover, .discover:hover {
+    background-color: #aeaeae;
+    color: black;
+}
+
+.explore:focus-visible, .discover:focus-visible {
+    outline: 2px solid #3a5bff;
+    outline-offset: 3px;
+}
+
+/* Phones: smaller buttons that sit side by side, or stack if the screen is very narrow */
+@media (max-width: 480px) {
+    .hero-btn {
+        gap: 10px;
+    }
+
+    .explore, .discover {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        border-radius: 10px;
+        min-height: 40px;
+    }
+}
+
+
+/* ---------- Sections below the hero ---------- */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+/* ---------- Founders and About sections (shared text layout) ---------- */
+#founders,
+#about {
+    text-align: left;
+    max-width: 800px;          /* keeps lines short enough to read comfortably */
+    margin: 0 auto;            /* centres the block on the page, text stays left-aligned */
+    line-height: 1.7;
+}
+
+#founders h2,
+#founders h3,
+#about h2,
+#about h3 {
+    text-align: center;
+}
+
+#founders h2,
+#about h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin: 0 0 12px;
+}
+
+#founders h3,
+#about h3 {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin: 48px 0 12px;       /* big gap above each heading, small gap to its paragraph */
+}
+
+/* The tagline sits directly under the main heading */
+#founders h2 + h3,
+#about h2 + h3 {
+    margin-top: 0;
+    margin-bottom: 32px;
+    opacity: 0.85;
+}
+
+#founders p,
+#about p {
+    margin: 0 0 20px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+#founders em,
+#about em {
+    font-size: 1.15rem;
+}
+
+/* ---------- Founders: profile cards ---------- */
+.founder-profiles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));   /* two cards side by side */
+    gap: 24px;
+    margin: 48px 0;
+}
+
+.founder {
+    display: flex;
+    flex-direction: column;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.35),
+        0 0 20px rgba(255, 255, 255, 0.15),
+        inset 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+#founders .founder h3 {
+    margin: 0 0 4px;
+}
+
+#founders .founder-role {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8fa2ff;
+    opacity: 1;
+}
+
+#founders .founder p:last-child {
+    margin-bottom: 0;
+}
+
+/* Phones and small tablets: one card above the other */
+@media (max-width: 640px) {
+    .founder-profiles {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ---------- Contact: team ---------- */
+.team {
+    list-style: none;
+    margin: 40px auto 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;           /* cards stack on narrow screens */
+    justify-content: center;
+    gap: 20px;
+}
+
+.team-member {
+    flex: 1 1 220px;
+    max-width: 280px;
+    padding: 24px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.team-member p {
+    margin: 0;
+}
+
+.team-name {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+}
+
+.team-member .team-role {
+    margin-top: 6px;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8fa2ff;
+}
+
+.team-email {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 0;
+    font-size: 0.95rem;
+    opacity: 0.85;
+    overflow-wrap: anywhere;   /* long addresses wrap instead of overflowing on phones */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: opacity 0.2s, border-color 0.2s;
+}
+
+.team-email:hover {
+    opacity: 1;
+    border-color: #8fa2ff;
+}
+
+.team-email:focus-visible {
+    outline: 2px solid #3a5bff;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ---------- Contact: call to action ---------- */
+.contact-cta {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-cta-text {
+    margin: 0;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+.contact-menu {
+    position: relative;        /* the options pop up just below the button */
+}
+
+.contact-toggle {
+    color: black;
+    background: white;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    border: none;
+    border-radius: 15px;
+    padding: 10px 28px;
+    min-height: 44px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-toggle:hover {
+    background-color: #aeaeae;
+}
+
+.contact-toggle:focus-visible,
+.contact-options a:focus-visible {
+    outline: 2px solid #3a5bff;
+    outline-offset: 3px;
+}
+
+.contact-options {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    min-width: 280px;
+    width: max-content;        /* grow to fit the longest option on one line */
+    max-width: calc(100vw - 32px);
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    text-align: left;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.contact-options[hidden] {
+    display: none;
+}
+
+.contact-options a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-family: "Oswald", sans-serif;
+    white-space: nowrap;       /* keep name and title on the same line */
+}
+
+.contact-options a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-options span {
+    font-family: sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8fa2ff;
+}
+
+/* ---------- Inner pages (About, Contact) ---------- */
+.page-main {
+    padding-top: 70px;         /* room for the fixed nav bar */
+    min-height: calc(100vh - 70px);
+}
+
+#navigation a[aria-current="page"] {
+    opacity: 1;
+    border-bottom: 2px solid #fff;
+}
+
+/* ---------- Hero: founder cards ---------- */
+.hero-content .hero-founders {
+    list-style: none;
+    margin-top: clamp(20px, 5vw, 40px);
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;           /* stacks on very narrow screens */
+    justify-content: center;
+    gap: 14px;
+}
+
+.hero-founder {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 170px;
+    padding: 12px 22px;
+    border: 1px solid #fff;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.hero-founder-name {
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+.hero-founder-role {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8fa2ff;
+}
+
+/* Phones: slightly smaller cards */
+@media (max-width: 480px) {
+    .hero-content .hero-founders {
+        gap: 10px;
+    }
+
+    .hero-founder {
+        min-width: 140px;
+        padding: 10px 16px;
+    }
+
+    .hero-founder-name {
+        font-size: 0.95rem;
+    }
+
+    .hero-founder-role {
+        font-size: 0.7rem;
+    }
+}
+
+/* Phones: contact popup fits the screen width */
+@media (max-width: 480px) {
+    .contact-options {
+        min-width: 0;
+        width: calc(100vw - 32px);
+        max-width: 320px;
+    }
+
+    .contact-options a {
+        gap: 12px;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .contact-options span {
+        font-size: 0.7rem;
+    }
+}
+
+/* ---------- Hero: animations ---------- */
+@keyframes hero-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes hero-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Each part of the hero appears one after another */
+.hero-content > * {
+    animation: hero-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-content > .design-title  { animation-delay: 0.1s; }
+.hero-content > #name          { animation-delay: 0.3s; animation-duration: 1s; }
+.hero-content > #role          { animation-delay: 0.55s; }
+.hero-content > .hero-btn      { animation-delay: 0.8s; }
+.hero-content > .hero-founders { animation-delay: 1.05s; }
+
+/* Nav bar fades in with the page */
+#navbar {
+    animation: hero-fade-in 0.8s ease both;
+}
+
+/* Gentle lift on hover */
+.explore,
+.discover,
+.hero-founder {
+    transition: background-color 0.3s, transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.explore:hover,
+.discover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(58, 91, 255, 0.35);
+}
+
+.hero-founder:hover {
+    transform: translateY(-3px);
+    border-color: #fff;
+    box-shadow:
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.35),
+        inset 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Respect visitors who turn off motion in their device settings */
+@media (prefers-reduced-motion: reduce) {
+    .hero-content > *,
+    #navbar {
+        animation: none;
+    }
+
+    .explore:hover,
+    .discover:hover,
+    .hero-founder:hover {
+        transform: none;
+    }
+}
+
+/* ---------- Hero: floating founder cards ---------- */
+@keyframes hero-card-float {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -8px; }
+}
+
+/* Starts after the cards have faded in; the second card is offset so they bob out of sync */
+.hero-founder {
+    animation: hero-card-float 5s ease-in-out 1.9s infinite;
+}
+
+.hero-founder:nth-child(2) {
+    animation-delay: 2.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-founder {
+        animation: none;
+    }
+}
+
+/* ---------- Hero: shooting stars (behind the text) ---------- */
+.hero {
+    position: relative;
+    overflow: hidden;          /* stars disappear at the hero's edges */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;                /* text sits above the stars */
+}
+
+.shooting-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;      /* never blocks clicks on buttons */
+}
+
+.shooting-stars span {
+    position: absolute;
+    width: clamp(80px, 12vw, 160px);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
+    border-radius: 999px;
+    opacity: 0;
+    animation: shooting-star 7s linear infinite;
+}
+
+/* Bright glowing head at the front of each line */
+.shooting-stars span::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    transform: translateY(-50%);
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Travel down and to the left, then stay hidden until the next run */
+@keyframes shooting-star {
+    0% {
+        opacity: 0;
+        transform: rotate(150deg) translateX(0);
+    }
+    3% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+        transform: rotate(150deg) translateX(clamp(500px, 90vw, 1200px));
+    }
+    100% {
+        opacity: 0;
+        transform: rotate(150deg) translateX(clamp(500px, 90vw, 1200px));
+    }
+}
+
+/* Different start points, timings and speeds so they feel random */
+.shooting-stars span:nth-child(1) { top: 5%;  left: 85%;  animation-delay: 0s;   animation-duration: 7s; }
+.shooting-stars span:nth-child(2) { top: 15%; left: 105%; animation-delay: 1.8s; animation-duration: 9s; }
+.shooting-stars span:nth-child(3) { top: -5%; left: 60%;  animation-delay: 3.5s; animation-duration: 8s; }
+.shooting-stars span:nth-child(4) { top: 30%; left: 100%; animation-delay: 5s;   animation-duration: 10s; }
+.shooting-stars span:nth-child(5) { top: 0%;  left: 40%;  animation-delay: 6.5s; animation-duration: 8.5s; }
+.shooting-stars span:nth-child(6) { top: 45%; left: 110%; animation-delay: 2.7s; animation-duration: 11s; }
+
+/* Phones: fewer stars so it doesn't feel busy */
+@media (max-width: 480px) {
+    .shooting-stars span:nth-child(n + 5) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shooting-stars {
+        display: none;
+    }
+}
+
+/* ---------- About: philosophy line ---------- */
+#about .about-philosophy {
+    text-align: center;
+}

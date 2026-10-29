@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Masonia Group LTD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Instrument+Serif:ital@0;1&family=Isometra&family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="nav.js" defer></script>
+    <script src="contact.js" defer></script>
+  </head>
+
+  <body>
+    <header class="page-header">
+      <nav id="navbar" aria-label="Main">
+        <a href="index.html" class="logo">
+          <img src="masonialogo.png" alt="Masonia Group home" />
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="navigation"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul id="navigation">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section id="contact">
+        <h2>Contact</h2>
+
+        <ul class="team">
+          <li class="team-member">
+            <p class="team-name">Saimon Rashid</p>
+            <p class="team-role">CEO</p>
+            <a class="team-email" href="mailto:Saimon@masoniagroup.com">Saimon@masoniagroup.com</a>
+          </li>
+          <li class="team-member">
+            <p class="team-name">Ruqayyah Ahmed</p>
+            <p class="team-role">Co-founder</p>
+            <a class="team-email" href="mailto:Ruqayyah@masoniagroup.com">Ruqayyah@masoniagroup.com</a>
+          </li>
+        </ul>
+
+        <div class="contact-cta">
+          <p class="contact-cta-text">Contact us for more info or enquiries</p>
+          <div class="contact-menu">
+            <button
+              class="contact-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="contact-options"
+            >
+              Contact us
+            </button>
+            <ul class="contact-options" id="contact-options" hidden>
+              <li>
+                <a href="mailto:Saimon@masoniagroup.com?subject=Enquiry%20for%20Masonia%20Group">
+                  Contact Saimon <span>CEO</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:Ruqayyah@masoniagroup.com?subject=Enquiry%20for%20Masonia%20Group">
+                  Contact Ruqayyah <span>Co-founder</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
